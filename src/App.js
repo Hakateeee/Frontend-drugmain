@@ -18,6 +18,26 @@ import PrivateRouter from "./PrivateRouter";
 
 /**PrivateRouter để xác thực trạng thái đăng nhập của user
  */
-//Xóa toàn bộ để check xem có hoạt động tốt không
+const App = () => {
+  return (
+    <Router>
+      <Switch>
+        <Route path="/" component={HomeScreen} exact />
+        <Route path="/search/:keyword" component={HomeScreen} exact />
+        <Route path="/products/:id" component={SingleProduct} />
+        <Route path="/login" component={Login} />
+        <Route path="/register" component={Register} />
+        <PrivateRouter path="/profile" component={ProfileScreen} />
+        <Route path="/cart/:id?" component={CartScreen} />
+        <PrivateRouter path="/shipping" component={ShippingScreen} />
+        <PrivateRouter path="/payment" component={PaymentScreen} />
+        <PrivateRouter path="/placeorder" component={PlaceOrderScreen} />
+        <PrivateRouter path="/order/:id" component={OrderScreen} />
+        <Route path="*" component={NotFound} />
+      </Switch>
+    </Router>
+  );
+};
+
 
 export default App;
